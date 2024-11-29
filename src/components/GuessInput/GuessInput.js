@@ -14,12 +14,18 @@ function GuessInput({setGuess}) {
     <label for="guess-input">Enter guess:</label>
     <input 
       onChange={(event)=>{
-        console.log(event.target.value)
+        if (event.target.validity.patternMismatch) {
+          event.target.setCustomValidity("Done bad things.")
+        } else {
+          event.target.setCustomValidity('');
+        }
         setGuessInput(event.target.value.toUpperCase().substring(0,5));          
         }
       } 
       id="guess-input" type="text" 
-      value={guessInput}/>
+      value={guessInput}
+      pattern="[a-zA-Z]{5,5}"
+      />
   </form>)
 }
 export default GuessInput;
