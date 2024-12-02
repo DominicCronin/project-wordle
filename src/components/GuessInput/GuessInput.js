@@ -1,30 +1,30 @@
 import React from 'react';
 
-function GuessInput({setGuess}) {
+function GuessInput({makeGuess}) {
   const [guessInput , setGuessInput] = React.useState('');
   return (
   <form class="guess-input-wrapper"
     onSubmit={(event)=> {
       event.preventDefault()
-      if (guessInput.length == 5) {
-        setGuess(guessInput)
+      if (guessInput.length === 5) {
+        makeGuess(guessInput)
         setGuessInput('')
       }
     }}>
     <label for="guess-input">Enter guess:</label>
     <input 
       onChange={(event)=>{
-        if (event.target.validity.patternMismatch) {
-          event.target.setCustomValidity("Done bad things.")
-        } else {
-          event.target.setCustomValidity('');
-        }
-        setGuessInput(event.target.value.toUpperCase().substring(0,5));          
-        }
+          if (event.target.validity.patternMismatch) {
+            event.target.setCustomValidity("Use a-zA-Z")
+          } else {
+            event.target.setCustomValidity('');
+          }
+          setGuessInput(event.target.value.toUpperCase().substring(-1,5));          
+          }
       } 
       id="guess-input" type="text" 
       value={guessInput}
-      pattern="[a-zA-Z]{5,5}"
+      pattern="[a-zA-Z]+"
       />
   </form>)
 }
