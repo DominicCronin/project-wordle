@@ -3,7 +3,7 @@ import React from 'react';
 function GuessInput({makeGuess}) {
   const [guessInput , setGuessInput] = React.useState('');
   return (
-  <form class="guess-input-wrapper"
+  <form className="guess-input-wrapper"
     onSubmit={(event)=> {
       event.preventDefault()
       if (guessInput.length === 5) {
@@ -11,7 +11,7 @@ function GuessInput({makeGuess}) {
         setGuessInput('')
       }
     }}>
-    <label for="guess-input">Enter guess:</label>
+    <label htmlFor="guess-input">Enter guess:</label>
     <input 
       onChange={(event)=>{
           if (event.target.validity.patternMismatch) {
