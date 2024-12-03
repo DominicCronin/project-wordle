@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GuessInput({makeGuess}) {
+function GuessInput({makeGuess, isOver}) {
   const [guessInput , setGuessInput] = React.useState('');
   return (
   <form className="guess-input-wrapper"
@@ -24,6 +24,7 @@ function GuessInput({makeGuess}) {
       } 
       id="guess-input" type="text" 
       value={guessInput}
+      disabled={isOver}
       pattern="[a-zA-Z]+"
       />
   </form>)
